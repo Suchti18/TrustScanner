@@ -33,6 +33,7 @@ async function checkWebsite(domain) {
     const completeURL = apiURL + domain   
     
     // API Request to FishFish
+    // Docs: https://api.fishfish.gg/docs/
     // Using GM_xmlhttpRequest to bypass CORS restrictions imposed by browsers
     return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
