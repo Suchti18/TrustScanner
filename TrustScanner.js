@@ -8,7 +8,9 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
+// This ensures we check the main domain only, ignoring subdomains because FishFish only accepts the main domain
 function getCurrentDomain() {
+    // Get the current host
     const hostname = window.location.host
 
     // Regex to extract the main domain
@@ -17,19 +19,27 @@ function getCurrentDomain() {
     // Match the hostname against the regex
     const match = hostname.match(regex);
 
-    // Return the main domain or null if no match
+    // Return the second-level and top-level domain concatenated by a dot or null if no match
     return match ? match[1] : null;
 }
 
 async function checkWebsite(domain) {
+    // Null check for the parameter
+    if(domain == null) {
+        return ""
+    }
+    
     const apiURL = "https://api.fishfish.gg/v1/domains/"
-    const completeURL = apiURL + domain
-
-    // API Request 
+    const completeURL = apiURL + domain   
+    
+    // API Request to FishFish
+    // Using GM_xmlhttpRequest to bypass CORS restrictions imposed by browsers
     return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
             method: "GET",
             url: completeURL,
+            // Response 404: Domain wasnt found in the FishFish database.
+            // Response 200: FishFish got an entry for the domain
             onload: function(response) {
                 if (response.status === 404) {
                     resolve("Not found");
@@ -51,7 +61,9 @@ async function checkWebsite(domain) {
     });
 }
 
+// Display a prominent banner warning users about the site's potential risk.
 function showBanner(result) {
+    // Create a div with a red background
     const div = document.createElement('div');
     div.style.display = 'flex';
     div.style.justifyContent = 'center';
@@ -64,6 +76,7 @@ function showBanner(result) {
     div.style.textAlign = 'center';
     div.style.boxSizing = 'border-box';
 
+    // Text inside the div
     div.innerHTML = `This site was flagged as\u00A0<strong>${result}</strong>. Proceed with caution!`
 
     document.body.prepend(div);
@@ -73,6 +86,7 @@ function showBanner(result) {
     'use strict';
 
     const result = await checkWebsite(getCurrentDomain())
+    // Decide whether to show the banner or not
     if(result === "safe") {
         console.log("Website is marked as safe")
     } else if(result === "malware" || result === "phishing") {
