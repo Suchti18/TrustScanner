@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name         TrustScanner
 // @namespace    http://tampermonkey.net/
-// @version      2025-06-20
-// @description  Try to warn people from malicious sites
-// @author       Nils
+// @version      v1.0.0
+// @description  Warn users about potentially malicious websites by checking the domain against the FishFish API and displaying a prominent alert if flagged as malware or phishing.
 // @match        *://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=apivoid.com
 // @grant        GM_xmlhttpRequest
@@ -26,8 +25,7 @@ async function checkWebsite(domain) {
     const apiURL = "https://api.fishfish.gg/v1/domains/"
     const completeURL = apiURL + domain
 
-    console.log(completeURL)
-
+    // API Request 
     return new Promise((resolve, reject) => {
         GM_xmlhttpRequest({
             method: "GET",
@@ -47,7 +45,7 @@ async function checkWebsite(domain) {
                 }
             },
             onerror: function(err) {
-                reject(new Error("Netzwerkfehler"));
+                reject(new Error("An error occurred during the api request"));
             }
         });
     });
