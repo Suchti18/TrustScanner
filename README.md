@@ -12,7 +12,8 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 
 ## Usage
 
-- Install the script in Tampermonkey.  
+- Install an extension for userscripts like Tampermonkey: [https://www.tampermonkey.net/](https://www.tampermonkey.net/).
+- Install the script in Tampermonkey: [https://greasyfork.org/en/scripts/540218-trustscanner](https://greasyfork.org/en/scripts/540218-trustscanner).
 - Make sure to allow the permission for `cross-origin resource` in Tampermonkey settings.
 - If the site is flagged, a red warning banner appears at the top of the page.
 
