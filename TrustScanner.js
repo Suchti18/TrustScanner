@@ -5,6 +5,7 @@
 // @description  Warn users about potentially malicious websites by checking the domain against the FishFish API and displaying a prominent alert if flagged as malware or phishing.
 // @match        *://*/*
 // @icon         https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/logo.png
+// @license      Unlicense
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
