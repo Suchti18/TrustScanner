@@ -13,7 +13,7 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 ## Usage
 
 - Install the script in Tampermonkey.  
-- Make sure to allow the permission for `GM_xmlhttpRequest` in Tampermonkey settings.
+- Make sure to allow the permission for `cross-origin resource` in Tampermonkey settings.
 - If the site is flagged, a red warning banner appears at the top of the page.
 
 ## Example

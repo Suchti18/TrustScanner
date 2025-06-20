@@ -4,7 +4,7 @@
 // @version      v1.0.0
 // @description  Warn users about potentially malicious websites by checking the domain against the FishFish API and displaying a prominent alert if flagged as malware or phishing.
 // @match        *://*/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=apivoid.com
+// @icon         https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/logo.png
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
