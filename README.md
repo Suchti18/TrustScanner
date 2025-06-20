@@ -1,6 +1,6 @@
 <div align="center">
 
-[![TrustScanner](./.github/banner.svg)](#TrustScanner)
+[![TrustScanner](https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/banner.svg)](#TrustScanner)
 
 </div>
 
@@ -18,7 +18,7 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 
 ## Example
 
-[![TrustScanner example](./.github/TrustScannerExample.png)](#Usage)
+[![TrustScanner example](https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/TrustScannerExample.png)](#Usage)
 
 ## AI
 
