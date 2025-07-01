@@ -20,6 +20,7 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 ## Example
 
 [![TrustScanner example](https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/TrustScannerExample.png)](#Usage)
+Here is a list of all flagged websites: https://api.fishfish.gg/v1/domains
 
 ## AI
 
