@@ -20,8 +20,8 @@ function getCurrentDomain() {
     // Match the hostname against the regex
     const match = hostname.match(regex);
 
-    // Return the second-level and top-level domain concatenated by a dot or null if no match
-    return match ? match[1] : null;
+    // Return the domain. The levels concatenated by a dot. Return null if no match is found
+    return hostname ? hostname : null;
 }
 
 async function checkWebsite(domain) {
