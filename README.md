@@ -17,6 +17,9 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 - Make sure to allow the permission for `cross-origin resource` in Tampermonkey settings.
 - If the site is flagged, a red warning banner appears at the top of the page.
 
+> [!NOTE]
+> If a Website was not found in the FishFish Database and you think its dangerous? Visit https://fishfish.gg/ to report it.
+
 ## Example
 
 [![TrustScanner example](https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/TrustScannerExample.png)](#Usage)
