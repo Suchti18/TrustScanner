@@ -60,7 +60,7 @@ async function checkWebsite(domain) {
 
 // Display a prominent banner warning users about the site's potential risk.
 function showBanner(result) {
-    // Create a div with a red background
+    // Create a div with a red background and the text "This site was flagged as [result]. Proceed with caution!"
     const div = document.createElement('div');
     div.style.display = 'flex';
     div.style.justifyContent = 'center';
@@ -68,7 +68,7 @@ function showBanner(result) {
     div.style.minHeight = '20vh';
     div.style.padding = '2vh 1vw';
     div.style.backgroundColor = 'red';
-    div.style.fontSize = '4vw';
+    div.style.fontSize = '3.5vw';
     div.style.color = 'white';
     div.style.textAlign = 'center';
     div.style.boxSizing = 'border-box';
@@ -76,7 +76,15 @@ function showBanner(result) {
     // Text inside the div
     div.innerHTML = `This site was flagged as\u00A0<strong>${result}</strong>. Proceed with caution!`
 
-    document.body.prepend(div);
+    // Create a shadow DOM to encapsulate the styles and prevent conflicts with the page's styles
+    // This is useful to ensure the banner looks consistent across different sites
+    const host = document.createElement('div');
+    const shadow = host.attachShadow({ mode: 'open' });
+
+    shadow.appendChild(div);
+
+    // Add banner to the top of the document
+    document.body.prepend(host);
 }
 
 (async function() {
