@@ -10,7 +10,7 @@ A Tampermonkey userscript that checks websites for dangerous categories (malware
 
 The script queries the current domain via the FishFish API: [https://fishfish.gg/](https://fishfish.gg/).
 
-## Usage
+## 🛠️ Usage
 
 - Install an extension for userscripts like Tampermonkey: [https://www.tampermonkey.net/](https://www.tampermonkey.net/).
 - Install the script in Tampermonkey: [https://greasyfork.org/en/scripts/540218-trustscanner](https://greasyfork.org/en/scripts/540218-trustscanner).
@@ -20,13 +20,23 @@ The script queries the current domain via the FishFish API: [https://fishfish.gg
 > [!NOTE]
 > If a Website was not found in the FishFish Database and you think its dangerous? Visit https://fishfish.gg/ to report it.
 
-## Example
+## 🏞️ Example
 
 [![TrustScanner example](https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/TrustScannerExample.png)](#Usage)
-Here is a list of all flagged websites: https://api.fishfish.gg/v1/domains
 
-## AI
+> [!NOTE]
+> Here is a list of all flagged websites: https://api.fishfish.gg/v1/domains
+
+## 📚 Additional Resources
+- [FishFish Documentation](https://api.fishfish.gg/docs/)
+- [What is CORS?](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+
+## 🤖 AI
 
 This project was developed with AI assistance in following areas:
 * Debugging 
 * README creation.
+
+## 📜 License
+
+[Unlicense](https://unlicense.org)
