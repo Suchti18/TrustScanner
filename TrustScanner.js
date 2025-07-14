@@ -4,8 +4,18 @@
 // @version      v1.0.0
 // @description  Warn users about potentially malicious websites by checking the domain against the FishFish API and displaying a prominent alert if flagged as malware or phishing.
 // @match        *://*/*
-// @Author       Suchti18
+// @tag          security
+// @tag          privacy
+// @tag          safety
+// @author       Suchti18
+// @copyright    /
+// @supportURL   https://github.com/Suchti18/TrustScanner
+// @homepageURL  https://github.com/Suchti18/TrustScanner
+// @homepage     https://github.com/Suchti18/TrustScanner
+// @updateURL    https://raw.githubusercontent.com/Suchti18/TrustScanner/main/TrustScanner.js
+// @downloadURL  https://raw.githubusercontent.com/Suchti18/TrustScanner/main/TrustScanner.js
 // @icon         https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/logo.png
+// @icon64       https://raw.githubusercontent.com/Suchti18/TrustScanner/main/.github/logo.png
 // @license      Unlicense
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
@@ -25,6 +35,7 @@ async function checkWebsite(domain) {
         return ""
     }
     
+    // API URL for FishFish
     const apiURL = "https://api.fishfish.gg/v1/domains/"
     const completeURL = apiURL + domain   
     
@@ -37,6 +48,7 @@ async function checkWebsite(domain) {
             url: completeURL,
             // Response 404: Domain wasnt found in the FishFish database.
             // Response 200: FishFish got an entry for the domain
+            // Every other response is an error
             onload: function(response) {
                 if (response.status === 404) {
                     resolve("Not found");
@@ -73,7 +85,7 @@ function showBanner(result) {
     div.style.textAlign = 'center';
     div.style.boxSizing = 'border-box';
 
-    // Text inside the div
+    // Adds the text mentioned earlier to the div
     div.innerHTML = `This site was flagged as\u00A0<strong>${result}</strong>. Proceed with caution!`
 
     // Create a shadow DOM to encapsulate the styles and prevent conflicts with the page's styles
@@ -90,15 +102,24 @@ function showBanner(result) {
 (async function() {
     'use strict';
 
+    // Check the current domain against the FishFish API
+    // If the domain is flagged as malware or phishing, show a warning banner
     const result = await checkWebsite(getCurrentDomain())
+
     // Decide whether to show the banner or not
+    // Log the result to the console for debugging purposes
+
+    console.log("Website checked: " + getCurrentDomain())
+
     if(result === "safe") {
         console.log("Website is marked as safe")
     } else if(result === "malware" || result === "phishing") {
         showBanner(result)
+        console.log("Website was flagged as " + result + ". A warning banner was displayed.")
     } else if(result === "Not found") {
         console.log("Website was not found in the FishFish Database. Do you think its dangerous? Visit https://fishfish.gg/")
     } else {
-        console.log("ERROR: Returned result: " + result)
+        console.error("Oops, something went wrong while checking the website.")
+        console.error("Returned result: " + result)
     }
 })();
