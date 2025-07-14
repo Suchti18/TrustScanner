@@ -15,12 +15,6 @@ function getCurrentDomain() {
     // Get the current host
     const hostname = window.location.host
 
-    // Regex to extract the main domain
-    const regex = /(?:[a-zA-Z0-9-]+\.)*([a-zA-Z0-9-]+\.[a-zA-Z]{2,})$/;
-
-    // Match the hostname against the regex
-    const match = hostname.match(regex);
-
     // Return the domain. The levels concatenated by a dot. Return null if no match is found
     return hostname ? hostname : null;
 }
